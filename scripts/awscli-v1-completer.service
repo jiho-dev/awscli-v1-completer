@@ -4,7 +4,7 @@ After=networking.service
 
 [Service]
 Type=simple
-ExecStart=/usr/loca/bin/awscli-v1-completer -s
+ExecStart=/usr/local/bin/awscli-v1-completer -s
 Restart=always
 RestartSec=10
 
