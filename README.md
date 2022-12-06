@@ -19,8 +19,8 @@ add `complete -C /usr/local/bin/awscli-v1-completer aws` to your `.bashrc`
 
 ## setup the server
 
-copy `scripts/awscli-v1-completer.service` to `/etc/systemd/system/`  
-run  `$ sudo chmod 664 /etc/systemd/system/awscli-v1-completer.service.service`  
+run  `$ sudo cp scripts/awscli-v1-completer.service /etc/systemd/system/`  
+run  `$ sudo chmod 664 /etc/systemd/system/awscli-v1-completer.service`  
 run  `$ sudo systemctl daemon-reload`  
 run  `$ sudo systemctl start awscli-v1-completer`  
 
