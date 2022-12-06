@@ -1,0 +1,13 @@
+[Unit]
+Description=awscli-v1-completer service
+After=networking.service
+
+[Service]
+Type=simple
+ExecStart=/usr/loca/bin/awscli-v1-completer -s
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
+
