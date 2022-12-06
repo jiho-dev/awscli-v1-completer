@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import syslog
+from datetime import datetime
+import completer.client as client
+import completer.server as server
+
+# sys.path.append("/usr/local/lib/python3.7/site-packages/")
+
+# st = datetime.now()
+# syslog.syslog('Start')
+
+if os.environ.get('LC_CTYPE', '') == 'UTF-8':
+    os.environ['LC_CTYPE'] = 'en_US.UTF-8'
+
+sock_path = "/tmp/_awscli_completion_service_"
+
+if __name__ == '__main__':
+    if len(sys.argv) >= 2 and sys.argv[1] == "-s":
+        # run server
+        server.run_server(sock_path)
+        sys.exit(1)
+
+    # bash exports COMP_LINE and COMP_POINT, tcsh COMMAND_LINE only
+    cline = os.environ.get('COMP_LINE') or os.environ.get('COMMAND_LINE') or ''
+    cpoint = int(os.environ.get('COMP_POINT') or len(cline))
+    try:
+        res = client.run_client(sock_path, cline, cpoint)
+
+        # et = datetime.now()
+        # syslog.syslog('Complete Duration: {}'.format(et - st))
+
+        print(res)
+    except KeyboardInterrupt:
+        # If the user hits Ctrl+C, we don't want to print
+        # a traceback to the user.
+        pass
