@@ -11,24 +11,26 @@ awscli-v1-completer server receives the cmdline from shell and give the result b
 
 install aws-cli v1 on your host and check if `aws` is working well 
 
+## setup
 
-## setup bash completion
+### steps
 
-run `$ cp awscli-v1-completer /usr/local/bin/`  
+```   
+# for the package
+$ make install
+$ make uninstall
+
+# for the linux service
+$ make install_linux
+$ make uninstall_linux
+
+```
+
+### setup bash completion
+
 add `complete -C /usr/local/bin/awscli-v1-completer aws` to your `.bashrc`  
 
-## setup the server
-
-run  `$ sudo cp scripts/awscli-v1-completer.service /etc/systemd/system/`  
-run  `$ sudo chmod 664 /etc/systemd/system/awscli-v1-completer.service`  
-run  `$ sudo systemctl daemon-reload`  
-run  `$ sudo systemctl start awscli-v1-completer`  
-
-run  `$ sudo systemctl stop awscli-v1-completer`  
-run  `$ sudo systemctl restart awscli-v1-completer`  
-run  `$ systemctl status awscli-v1-completer`   
-
-## use it
+### use it
 
 check if `aws ec2 [TAB]` is working well and feel it 
 
