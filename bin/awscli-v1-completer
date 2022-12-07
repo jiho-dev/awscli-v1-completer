@@ -4,13 +4,8 @@ import os
 import sys
 import syslog
 from datetime import datetime
-import completer.client as client
-import completer.server as server
-
-# sys.path.append("/usr/local/lib/python3.7/site-packages/")
-
-# st = datetime.now()
-# syslog.syslog('Start')
+import awscli_v1_completer.client as client
+import awscli_v1_completer.server as server
 
 if os.environ.get('LC_CTYPE', '') == 'UTF-8':
     os.environ['LC_CTYPE'] = 'en_US.UTF-8'
@@ -28,9 +23,6 @@ if __name__ == '__main__':
     cpoint = int(os.environ.get('COMP_POINT') or len(cline))
     try:
         res = client.run_client(sock_path, cline, cpoint)
-
-        # et = datetime.now()
-        # syslog.syslog('Complete Duration: {}'.format(et - st))
 
         print(res)
     except KeyboardInterrupt:
