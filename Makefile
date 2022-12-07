@@ -15,4 +15,5 @@ uninstall_linux:
 	sudo systemctl daemon-reload
 	sudo rm -f /etc/systemd/system/awscli-v1-completer.service
 
-
+restart:
+	sudo systemctl restart awscli-v1-completer

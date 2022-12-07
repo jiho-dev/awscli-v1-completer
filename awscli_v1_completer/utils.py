@@ -4,6 +4,7 @@ import socket
 import os
 import time
 import syslog
+import columnize
 
 def recv_header(sock):
     # 32bits: 0x0000ffff
@@ -32,10 +33,13 @@ def recv_data(sock, data_len):
 
     return buffer
 
-
 def send_data(sock, msg):
     # <data-length><data>
     buf = "0x%08x%s" % (len(msg), msg)
 
     # send the buf
     sock.send(buf.encode('utf-8'))
+
+def columnize_data(data):
+    out = columnize.columnize(data, displaywidth=80)
+    return out

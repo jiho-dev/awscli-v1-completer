@@ -56,7 +56,9 @@ def run_server(sock_path):
             l = len(buffer)
 
             choices = comp.complete(buffer, l)
+
             out = ' \n'.join(choices)
+            #out = columnize_data(choices)
 
             send_data(connection, out)
 
