@@ -56,9 +56,10 @@ def run_server(sock_path):
             l = len(buffer)
 
             choices = comp.complete(buffer, l)
+            #if false and len(choices) > 1:
+            #    choices = find_prefix(choices)
 
             out = ' \n'.join(choices)
-            #out = columnize_data(choices)
 
             send_data(connection, out)
 
