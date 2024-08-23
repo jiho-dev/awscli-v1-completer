@@ -12,6 +12,11 @@ awscli-v1-completer server receives the cmdline from shell and give the result b
 install aws-cli v1 on your host and check if `aws` is working well 
 
 ## setup
+### to use cusom service-2.json file
+
+because of running awscli-v1-completer in system servcie
+save /root/.aws/models/ec2/2016-11-15/service-2.json
+
 
 ### steps
 
